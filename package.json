@@ -1,0 +1,36 @@
+{
+  "name": "botframework-slack-support-bot",
+  "version": "1.0.0",
+  "description": "slack bot for botframework",
+  "main": "server.js",
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.8"
+  },
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nwhitmont/botframework-slack-support-bot.git"
+  },
+  "keywords": [
+    "botframework",
+    "slack",
+    "slackbot",
+    "botbuilder",
+    "node"
+  ],
+  "author": "Nils Whitmont <nils.whitmont@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nwhitmont/botframework-slack-support-bot/issues"
+  },
+  "homepage": "https://github.com/nwhitmont/botframework-slack-support-bot#readme",
+  "dependencies": {
+    "botbuilder": "^3.8.0-beta4",
+    "eslint": "^3.19.0",
+    "restify": "^4.3.0"
+  }
+}
