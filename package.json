@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/nwhitmont/botframework-slack-support-bot#readme",
   "dependencies": {
-    "botbuilder": "^3.8.0-beta4",
+    "botbuilder": "^3.7.0",
     "eslint": "^3.19.0",
     "restify": "^4.3.0"
   }
