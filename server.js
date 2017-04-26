@@ -85,7 +85,7 @@ bot.dialog('herocard', [
 ]);
 
 bot.dialog('basicMessage', function (session) {
-    session.send('A basic message');
+    session.endDialog('A basic message');
 });
 
 bot.dialog('exit', function (session) {
@@ -99,7 +99,7 @@ bot.dialog('buttons', [
         bb.Prompts.choice(session, "Choose a sandwich:", ["Tuna", "Roast Beef", "Veggie Special"]);
     },
     function (session, result) {
-        session.send(`You picked: ${result.response.entity}`)
+        session.endDialog(`You picked: ${result.response.entity}`)
     }
 ]).triggerAction({ matches: /button/i })
 
