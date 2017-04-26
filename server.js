@@ -43,7 +43,7 @@ bot.dialog('/', [
     function (session) {
         session.send('Hi, I am Slack Support Bot!\n\n I will show you what is possible with Bot Framework for Slack.');
 
-        bb.Prompts.choice(session, 'Choose a demo', ['Hero Card', 'Message with Buttons', 'Basic message']);
+        bb.Prompts.choice(session, 'Choose a demo', ['Hero Card', 'Slack Buttons', 'Basic text']);
     },
     function (session, result) {
         console.log('result:\n');
