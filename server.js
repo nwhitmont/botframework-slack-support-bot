@@ -53,11 +53,11 @@ bot.dialog('/', [
             case 'Hero Card':
                 session.beginDialog('herocard');
                 break;
+            case 'Slack Buttons':
+                session.beginDialog('buttons');
+                break;
             case 'Basic message':
                 session.beginDialog('basicMessage');
-                break;
-            case 'Message with Buttons':
-                session.beginDialog('buttons');
                 break;
             default:
                 session.send('invalid choice');
