@@ -17,7 +17,7 @@ botServer.listen(process.env.port || process.env.PORT || 3978, function () {
 
 // lets us know our bot is online when visiting the deployment URL in browser
 botServer.get('/', function (request, response, next) {
-    response.send({ status: 'online'});
+    response.send({ status: 'online' });
     next();
 });
 
@@ -40,16 +40,16 @@ botServer.post('/api/messages', chatConnector.listen());
 var bot = new bb.UniversalBot(chatConnector);
 
 bot.dialog('/', [
-    function(session) {
+    function (session) {
         session.send('Hi, I am Slack Support Bot!\n\n I will show you what is possible with Bot Framework for Slack.');
-    
+
         bb.Prompts.choice(session, 'Choose a demo', ['Hero Card', 'Message with Buttons', 'Basic message']);
     },
-    function(session, result) {
+    function (session, result) {
         console.log('result:\n');
         console.log(result);
 
-        switch(result.response.entity) {
+        switch (result.response.entity) {
             case 'Hero Card':
                 session.beginDialog('herocard');
                 break;
@@ -84,16 +84,23 @@ bot.dialog('herocard', [
     }
 ]);
 
-bot.dialog('basicMessage', function(session) {
+bot.dialog('basicMessage', function (session) {
     session.send('A basic message');
 });
 
-bot.dialog('exit', function(session) {
+bot.dialog('exit', function (session) {
     session.endConversation('Goodbye!');
 }).triggerAction({ matches: /exit/i });
 
-bot.dialog('buttons', function(session) {
-    session.send('button goes here');
-}).triggerAction({ matches: /button/i })
+bot.dialog('buttons', [
+    function (session) {
+        session.send('What kind of sandwich would you like?');
+
+        bb.Prompts.choice(session, "Choose a sandwich:", ["Tuna", "Roast Beef", "Veggie Special"]);
+    },
+    function (session, result) {
+        session.send(`You picked: ${result.response.entity}`)
+    }
+]).triggerAction({ matches: /button/i })
 
 // END OF LINE
