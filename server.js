@@ -39,25 +39,39 @@ botServer.post('/api/messages', chatConnector.listen());
 // Create your bot with a function to receive messages from the user
 var bot = new bb.UniversalBot(chatConnector);
 
+var HeroCardName = 'Hero Card';
+var SlackButtonsName = 'Slack Buttons';
+var BasicTextName = 'Basic Text';
+var CodeFormatTextName = 'Code Formatting';
+var DemoNames = [
+    HeroCardName,
+    SlackButtonsName,
+    BasicTextName,
+    CodeFormatTextName
+];
+
 bot.dialog('/', [
     function (session) {
         session.send('Hi, I am Slack Support Bot!\n\n I will show you what is possible with Bot Framework for Slack.');
 
-        bb.Prompts.choice(session, 'Choose a demo', ['Hero Card', 'Slack Buttons', 'Basic text']);
+        bb.Prompts.choice(session, 'Choose a demo', DemoNames);
     },
     function (session, result) {
         console.log('result:\n');
         console.log(result);
 
         switch (result.response.entity) {
-            case 'Hero Card':
+            case HeroCardName:
                 session.beginDialog('herocard');
                 break;
-            case 'Slack Buttons':
+            case SlackButtonsName:
                 session.beginDialog('buttons');
                 break;
-            case 'Basic message':
+            case BasicTextName:
                 session.beginDialog('basicMessage');
+                break;
+            case CodeFormatTextName:
+                session.beginDialog('code-formatting');
                 break;
             default:
                 session.send('invalid choice');
@@ -101,6 +115,15 @@ bot.dialog('buttons', [
     function (session, result) {
         session.endDialog(`You picked: ${result.response.entity}`)
     }
-]).triggerAction({ matches: /button/i })
+]).triggerAction({ matches: /button/i });
+
+bot.dialog('code-formatting', function (session) {
+    session.send("Code with back-tick style code formatting: `var foo = 'bar';`");
+    session.send("Code in double parens with single backtick `var code = 'formatted correctly?';`");
+    session.send("Code in double parens with tripple backtick: ```var code.formatted = true;```");
+    session.send('Code in single parens with single backtick `var code = "formatted correctly?"`');
+    session.send('Code in single parens with tripple backtick: ```var code.formatted = true;```');
+    session.endDialog();
+}).triggerAction({ matches: /code/i });
 
 // END OF LINE
