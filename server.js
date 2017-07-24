@@ -43,11 +43,13 @@ var HeroCardName = 'Hero Card';
 var SlackButtonsName = 'Slack Buttons';
 var BasicTextName = 'Basic Text';
 var CodeFormatTextName = 'Code Formatting';
+var SlackChannelData = 'Slack Channel Data';
 var DemoNames = [
     HeroCardName,
     SlackButtonsName,
     BasicTextName,
-    CodeFormatTextName
+    CodeFormatTextName,
+    SlackChannelData
 ];
 
 bot.dialog('/', [
@@ -72,6 +74,9 @@ bot.dialog('/', [
                 break;
             case CodeFormatTextName:
                 session.beginDialog('code-formatting');
+                break;
+            case SlackChannelData:
+                session.beginDialog('slack-channel-data');
                 break;
             default:
                 session.send('invalid choice');
@@ -125,5 +130,13 @@ bot.dialog('code-formatting', function (session) {
     session.send('Code in single parens with tripple backtick: ```var code.formatted = true;```');
     session.endDialog();
 }).triggerAction({ matches: /code/i });
+
+bot.dialog('slack-channel-data', function(session) {
+    var message = {};
+    var message.channelData = {
+        text = ":tada: Code with back-tick style code formatting: `var foo = 'bar';`"
+    }
+    session.send(message);
+}).triggerAction({matches: /channel/i});
 
 // END OF LINE
