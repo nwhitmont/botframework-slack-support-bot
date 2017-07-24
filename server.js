@@ -140,7 +140,7 @@ bot.dialog('slack-channel-data', function(session) {
     session.send(message);
 
     session.send("Sending second message:");
-    session.send({"channelData": { "text": "Code in double parens with tripple backtick: ```var code.formatted = true;```"});
+    session.send({"channelData": { "text": "Code in double parens with tripple backtick: ```var code.formatted = true;```"}});
 
     session.send("Sending third message:");
     session.send({"channelData": { 'text': 'Code in single parens with single backtick `var code = "formatted correctly?"`'}});
