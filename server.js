@@ -154,7 +154,14 @@ bot.dialog('slack-channel-data', function(session) {
             text: "channel data text with code formatting: \`var foo = 'formatted text'\`"
         }
     });
-    
+
+    session.send("Sending 6th message:");
+    session.send({ 
+        "channelData": {
+            "text": "channel data text with triple backtick: ```var foo = 'formatted text'```"
+        }
+    });
+
     session.endDialog();
 
 }).triggerAction({matches: /channel/i});
