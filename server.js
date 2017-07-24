@@ -137,6 +137,11 @@ bot.dialog('slack-channel-data', function(session) {
         text: ":tada: Code with back-tick style code formatting: `var foo = 'bar';`"
     }
     session.send(message);
+    session.send({"channelData": "Code in double parens with tripple backtick: ```var code.formatted = true;```"});
+    session.send({"channelData": 'Code in single parens with single backtick `var code = "formatted correctly?"`'});
+    session.send({"channelData": 'Code in single parens with tripple backtick: ```var code.formatted = true;```'});
+    session.endDialog();
+
 }).triggerAction({matches: /channel/i});
 
 // END OF LINE
