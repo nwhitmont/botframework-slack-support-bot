@@ -125,9 +125,9 @@ bot.dialog('buttons', [
 bot.dialog('code-formatting', function (session) {
     session.send("Code with back-tick style code formatting: `var foo = 'bar';`");
     session.send("Code in double parens with single backtick `var code = 'formatted correctly?';`");
-    session.send("Code in double parens with tripple backtick: ```var code.formatted = true;```");
+    session.send("Code in double parens with triple backtick: ```var code.formatted = true;```");
     session.send('Code in single parens with single backtick `var code = "formatted correctly?"`');
-    session.send('Code in single parens with tripple backtick: ```var code.formatted = true;```');
+    session.send('Code in single parens with triple backtick: ```var code.formatted = true;```');
     session.endDialog();
 }).triggerAction({ matches: /code/i });
 
@@ -140,13 +140,13 @@ bot.dialog('slack-channel-data', function(session) {
     session.send(message);
 
     session.send("Sending second message:");
-    session.send({"channelData": { "text": "Code in double parens with tripple backtick: ```var code.formatted = true;```"}});
+    session.send({"channelData": { "text": "Code in double parens with triple backtick: ```var code.formatted = true;```"}});
 
     session.send("Sending third message:");
     session.send({"channelData": { 'text': 'Code in single parens with single backtick `var code = "formatted correctly?"`'}});
 
     session.send("Sending fourth message:");
-    session.send({"channelData": { 'text': 'Code in single parens with tripple backtick: ```var code.formatted = true;```'}});
+    session.send({"channelData": { 'text': 'Code in single parens with triple backtick: ```var code.formatted = true;```'}});
     session.endDialog();
 
 }).triggerAction({matches: /channel/i});
