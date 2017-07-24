@@ -134,7 +134,7 @@ bot.dialog('code-formatting', function (session) {
 bot.dialog('slack-channel-data', function(session) {
     var message = {};
     message.channelData = {
-        text = ":tada: Code with back-tick style code formatting: `var foo = 'bar';`"
+        text: ":tada: Code with back-tick style code formatting: `var foo = 'bar';`"
     }
     session.send(message);
 }).triggerAction({matches: /channel/i});
