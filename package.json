@@ -4,12 +4,11 @@
   "description": "slack bot for botframework",
   "main": "server.js",
   "engines": {
-    "node": "6.10.2",
-    "npm": "3.10.10"
+    "node": "8.1.0",
+    "npm": "5.0.3"
   },
   "scripts": {
-    "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,7 @@
   },
   "homepage": "https://github.com/nwhitmont/botframework-slack-support-bot#readme",
   "dependencies": {
-    "botbuilder": "^3.7.0",
+    "botbuilder": "^3.9.1",
     "eslint": "^3.19.0",
     "restify": "^4.3.0"
   }
